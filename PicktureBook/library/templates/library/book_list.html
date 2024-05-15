@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Picture Books Collection</title>
+</head>
+<body>
+    <h1>Picture Books</h1>
+    <ul>
+        {% for book in books %}
+        <li>
+            {{ book.title }} by {{ book.author }}
+            <strong>Tags:</strong>
+            {% for tag in book.tags.all %}
+                <span>{{ tag.name }}</span>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
