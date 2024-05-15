@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Picture Book</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand m-3" href="#">繪本</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">首頁</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">書庫</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="search-box mx-5 my-3">
+  <div class="input-group">
+    <input class="form-control" type="search" placeholder="搜尋繪本..." aria-label="Search">
+    <button class="btn btn-outline-light my-2 my-sm-0 bg-dark" type="submit">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div class="btn-group d-flex justify-content-center mb-3" role="group" aria-label="Category bar">
+    <a href="#" class="btn btn-dark">類別</a>
+    <a href="#" class="btn btn-dark">類別</a>
+    <a href="#" class="btn btn-dark">類別</a>
+    <a href="#" class="btn btn-dark">類別</a>
+    <a href="#" class="btn btn-dark">類別</a>
+  </div>
+
+  <div id="carouselExampleIndicators" class="carousel slide mb-4" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="#" class="d-block w-100" alt="推薦書籍 1">
+      </div>
+      <div class="carousel-item">
+        <img src="#" class="d-block w-100" alt="推薦書籍 2">
+      </div>
+      <div class="carousel-item">
+        <img src="#" class="d-block w-100" alt="推薦書籍 3">
+      </div>
+      <div class="carousel-item">
+        <img src="#" class="d-block w-100" alt="推薦書籍 4">
+      </div>
+      <div class="carousel-item">
+        <img src="#" class="d-block w-100" alt="推薦書籍 5">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only"></span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only"></span>
+    </a>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 col-lg-3 mb-4">
+      <div class="card">
+        <img src="Anderson_be_brave.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <a href="#">
+            <h5 class="card-title">繪本標題</h5>
+          </a>
+          <h6 class="card-subtitle mb-2 text-muted">作者</h6>
+          <p class="card-text">這裡可以放一些繪本描述。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
