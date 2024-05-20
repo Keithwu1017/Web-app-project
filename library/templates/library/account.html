@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Account</title>
+</head>
+<body>
+    <h2>Account</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Update Information</legend>
+            {{ user_form.as_p }}
+        </fieldset>
+        <fieldset>
+            <legend>Change Password</legend>
+            {{ password_form.as_p }}
+        </fieldset>
+        <button type="submit">Update</button>
+    </form>
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+    <a href="{% url 'delete_account' %}">Delete Account</a>
+</body>
+</html>
