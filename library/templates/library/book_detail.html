@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ book.title }}</title>
+</head>
+<body>
+    <h1>{{ book.title }} by {{ book.author }}</h1>
+    <p>{{ book.description }}</p>
+    <h2>Pages</h2>
+    <div>
+        {% for picture in book.pictures.all %}
+        <div>
+            <h4>Page {{ picture.page_number }}</h4>
+            <img src="{{ picture.image.url }}" alt="Page {{ picture.page_number }}">
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
