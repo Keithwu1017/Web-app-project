@@ -15,12 +15,12 @@ def book_list(request):
     if query:
         books = PictureBook.objects.filter(
             Q(title__icontains=query) |
-            Q(tags__icontains=query) |
+            Q(tags__name__icontains=query) |
             Q(author__icontains=query)
-        )
+        ).distinct()
     else:
         books = PictureBook.objects.all()
-    return render(request, 'book_list.html', {'books': books})
+    return render(request, 'library/book_list.html', {'books': books})
 
 def book_detail(request, pk):
     book = get_object_or_404(PictureBook, pk=pk)
