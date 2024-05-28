@@ -6,6 +6,10 @@
 <body>
     <h1>Picture Books</h1>
     <ul>
+        <form method="GET" action="{% url 'book_list' %}">
+            <input type="text" name="q" placeholder="Search books...">
+            <button type="submit">Search</button>
+        </form>
         {% for book in books %}
         <li>
             {{ book.title }} by {{ book.author }}

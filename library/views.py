@@ -5,13 +5,22 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegistrationForm, UserEditForm, CustomPasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
+from django.db.models import Q
 
 def index(request):
     return render(request, 'library/index.html', {})
 
 def book_list(request):
-    books = PictureBook.objects.all()
-    return render(request, 'library/book_list.html', {'books': books})
+    query = request.GET.get('q')
+    if query:
+        books = PictureBook.objects.filter(
+            Q(title__icontains=query) |
+            Q(tags__icontains=query) |
+            Q(author__icontains=query)
+        )
+    else:
+        books = PictureBook.objects.all()
+    return render(request, 'book_list.html', {'books': books})
 
 def book_detail(request, pk):
     book = get_object_or_404(PictureBook, pk=pk)
