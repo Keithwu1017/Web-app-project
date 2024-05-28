@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Reader</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .reader-container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">首頁</a>
+    <div class="navbar-nav ml-auto">
+        <span class="navbar-text mx-3">繪本標題</span>
+        <a class="nav-item nav-link" href="#">返回書庫</a>
+    </div>
+</nav>
+
+<div class="reader-container">
+    <div class="page active" id="page-1">
+        <p>第1頁</p>
+    </div>
+    <div class="page" id="page-2">
+        <p>第2頁</p>
+    </div>
+    <div class="page" id="page-3">
+        <p>第3頁</p>
+    </div>
+    <!-- 這裡到時候改成後端輸入繪本頁面 -->
+    <div class="controls">
+        <button class="btn btn-primary" id="prev">上一頁</button>
+        <div>
+            跳到第 <input type="number" id="page-number" class="form-control d-inline-block" style="width: 70px;" min="1" value="1"> 頁
+            <button class="btn btn-secondary" id="go">跳轉</button>
+        </div>
+        <button class="btn btn-primary" id="next">下一頁</button>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    let currentPage = 1;
+    const totalPages = document.querySelectorAll('.page').length;
+
+    function showPage(page) {
+        document.querySelectorAll('.page').forEach((el, index) => {
+            el.classList.toggle('active', index === page - 1);
+        });
+    }
+
+    document.getElementById('prev').addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            showPage(currentPage);
+            document.getElementById('page-number').value = currentPage;
+        }
+    });
+
+    document.getElementById('next').addEventListener('click', () => {
+        if (currentPage < totalPages) {
+            currentPage++;
+            showPage(currentPage);
+            document.getElementById('page-number').value = currentPage;
+        }
+    });
+
+    document.getElementById('go').addEventListener('click', () => {
+        const pageNumber = parseInt(document.getElementById('page-number').value);
+        if (pageNumber >= 1 && pageNumber <= totalPages) {
+            currentPage = pageNumber;
+            showPage(currentPage);
+        }
+    });
+
+    showPage(currentPage);
+</script>
+
+</body>
+</html>
