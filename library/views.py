@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render
-from .models import PictureBook
+from .models import PictureBook, Picture
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -38,7 +38,9 @@ def book_list(request):
 
 def book_detail(request, pk):
     book = get_object_or_404(PictureBook, pk=pk)
-    return render(request, 'library/book_detail.html', {'book': book})
+    page_number = request.GET.get('page', 0)
+    picture = get_object_or_404(Picture, book=book, page_number=page_number)
+    return render(request, 'library/reader.html', {'book': book, 'picture': picture})
 
 def books_by_tag(request, tag_slug):
     books = PictureBook.objects.filter(tags__name__in=[tag_slug])
@@ -54,7 +56,7 @@ def register(request):
             return redirect('login')
     else:
         form = UserRegistrationForm()
-    return render(request, 'library/register.html', {'form': form})
+    return render(request, 'library/register.html', {'form': form, 'error_msg': dict(form.errors)})
 
 def login_view(request):
     if request.method == 'POST':
