@@ -6,9 +6,23 @@ from django.contrib import messages
 from .forms import UserRegistrationForm, UserEditForm, CustomPasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.db.models import Q
+from taggit.models import Tag
 
 def index(request):
-    return render(request, 'library/index.html', {})
+    query = request.GET.get('q')
+    if query:
+        books = PictureBook.objects.filter(
+            Q(title__icontains=query) |
+            Q(tags__name__icontains=query) |
+            Q(author__icontains=query)
+        ).distinct()
+    else:
+        books = PictureBook.objects.all()
+    
+    return render(request, 'library/home_page.html', {
+        'books': books,
+        'tags': Tag.objects.all()[:5]
+    })
 
 def book_list(request):
     query = request.GET.get('q')
