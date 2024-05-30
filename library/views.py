@@ -38,9 +38,9 @@ def book_list(request):
 
 def book_detail(request, pk):
     book = get_object_or_404(PictureBook, pk=pk)
-    page_number = request.GET.get('page', 0)
-    picture = get_object_or_404(Picture, book=book, page_number=page_number)
-    return render(request, 'library/reader.html', {'book': book, 'picture': picture})
+    #page_number = request.GET.get('page', 0)
+    #picture = get_object_or_404(Picture, book=book, page_number=page_number)
+    return render(request, 'library/reader.html', {'book': book})
 
 def books_by_tag(request, tag_slug):
     books = PictureBook.objects.filter(tags__name__in=[tag_slug])
