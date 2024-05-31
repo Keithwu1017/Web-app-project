@@ -54,7 +54,13 @@
         <a class="nav-link" href="{% url 'index' %}">首頁</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">書庫</a>
+        <a class="nav-link" href="{% url 'login' %}">登入</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">註冊</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'account' %}">帳戶</a>
       </li>
     </ul>
   </div>
@@ -76,7 +82,7 @@
 
   <div class="btn-group d-flex justify-content-center mb-3" role="group" aria-label="Category bar">
     {% for tag in tags %}
-    <a href="tag/{{ tag.name }}" class="btn btn-dark">{{ tag.name }}</a>
+    <a href="?q={{ tag.name }}" class="btn btn-dark">{{ tag.name }}</a>
     {% endfor %}
   </div>
 
