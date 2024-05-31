@@ -1,64 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ book.title }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-    <style>
-        .reader-container {
-            width: 80%;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .title{
-            display: flex;
-            justify-content: center;
-        }
-        .page {
-            display: none;
-        }
-        .page.active {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        img {
-            max-width: 100%;
-            width: auto;
-            height: auto;
-        }
-    </style>
-</head>
+{% extends "library/home_page.html" %}
+
+{% block title %}<title>{{ book.title }}</title>{% endblock %}
+
+{% block css %}
+<style>
+    .reader-container {
+        width: 80%;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .title{
+        display: flex;
+        justify-content: center;
+    }
+    .page {
+        display: none;
+    }
+    .page.active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .controls {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    img {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+    }
+</style>
+{% endblock %}
+
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">首頁</a>
-    <div class="navbar-nav ml-auto">
-        <span class="navbar-text mx-3">{{ book.title }}</span>
-        <a class="nav-item nav-link" href="#">返回書庫</a>
-    <span class="navbar-brand m-3">繪本</span>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'index' %}">首頁</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">書庫</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+{% block container %}
 
 <div class="title">
 <h1>{{ book.title }}</h1>
@@ -88,10 +68,6 @@
         <button class="btn btn-primary" id="next">下一頁</button>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
     let currentPage = 1;
@@ -130,5 +106,4 @@
     showPage(currentPage);
 </script>
 
-</body>
-</html>
+{% endblock %}
