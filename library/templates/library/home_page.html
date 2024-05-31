@@ -132,12 +132,12 @@
     <div class="carousel-item active">
       <div class="carousel-container">
         <div class="carousel-image">
-          <a href="books/{{ forloop.counter }}">
+          <a href="books/{{ book.pk }}">
             <img src="{{ book.pictures.all.0.image.url }}" alt="{{ book.title }}">
           </a>
         </div>
         <div class="carousel-info">
-          <a href="books/{{ forloop.counter }}">
+          <a href="books/{{ book.pk }}">
             <h4>{{ book.title }}</h4>
           </a>
           <h5>by {{ book.author }}</h5>
@@ -149,7 +149,7 @@
     <div class="carousel-item">
       <div class="carousel-container">
         <div class="carousel-image">
-          <a href="books/{{ forloop.counter }}">
+          <a href="books/{{ book.pk }}">
             <img src="{{ book.pictures.all.0.image.url }}" alt="{{ book.title }}">
           </a>
         </div>
