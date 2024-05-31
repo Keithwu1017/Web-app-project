@@ -40,6 +40,10 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">首頁</a>
+    <div class="navbar-nav ml-auto">
+        <span class="navbar-text mx-3">{{ book.title }}</span>
+        <a class="nav-item nav-link" href="#">返回書庫</a>
     <span class="navbar-brand m-3">繪本</span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -78,7 +82,7 @@
     <div class="controls">
         <button class="btn btn-primary" id="prev">上一頁</button>
         <div>
-            跳到第 <input type="number" id="page-number" class="form-control d-inline-block" style="width: 70px;" min="1" value="1"> 頁
+            跳到第 <input type="number" id="page-number" name="page" class="form-control d-inline-block" style="width: 70px;" min="1" value="1"> 頁
             <button class="btn btn-secondary" id="go">跳轉</button>
         </div>
         <button class="btn btn-primary" id="next">下一頁</button>
