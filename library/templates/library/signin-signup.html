@@ -53,7 +53,7 @@
     </ul>
     <div class="tab-content" id="authTabContent">
         <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-            <form method="POST" action="{% url 'login' %}">
+            <form method="POST" action="{% url 'register' %}">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="registerUsername">使用者名稱</label>

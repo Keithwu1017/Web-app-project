@@ -69,7 +69,7 @@ def login_view(request):
             return redirect('index')
         else:
             messages.error(request, 'Invalid username or password')
-    return render(request, 'library/login.html')
+    return render(request, 'library/signin-signup.html')
 
 def logout_view(request):
     logout(request)
