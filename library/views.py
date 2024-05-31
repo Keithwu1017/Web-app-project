@@ -7,6 +7,8 @@ from .forms import UserRegistrationForm, UserEditForm, CustomPasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.db.models import Q
 from taggit.models import Tag
+import json
+
 
 def index(request):
     query = request.GET.get('q')
@@ -18,7 +20,7 @@ def index(request):
         ).distinct()
     else:
         books = PictureBook.objects.all()
-    
+
     return render(request, 'library/home_page.html', {
         'books': books,
         'tags': Tag.objects.all()[:5],
@@ -48,6 +50,7 @@ def books_by_tag(request, tag_slug):
     return render(request, 'library/book_list.html', {'books': books})
 
 def register(request):
+    error_msg = {}
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
@@ -55,9 +58,16 @@ def register(request):
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}!')
             return redirect('register')
+        else:
+            error_msg = form.errors
     else:
         form = UserRegistrationForm()
-    return render(request, 'library/signin-signup.html', {'form': form, 'error_msg': dict(form.errors)})
+    print("error_msg: ", dict(form.errors))
+    context = {
+        'form': form,
+        'error_msg': json.dumps(error_msg) if error_msg else '{}'
+    }
+    return render(request, 'library/signin-signup.html', context)
 
 def login_view(request):
     if request.method == 'POST':
