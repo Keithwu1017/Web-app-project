@@ -21,7 +21,8 @@ def index(request):
     
     return render(request, 'library/home_page.html', {
         'books': books,
-        'tags': Tag.objects.all()[:5]
+        'tags': Tag.objects.all()[:5],
+        'user': request.user
     })
 
 def book_list(request):

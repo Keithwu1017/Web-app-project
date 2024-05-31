@@ -44,6 +44,7 @@
     <div class="tab-content" id="authTabContent">
         <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
             <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="loginEmail">使用者名稱</label>
                     <input type="email" class="form-control" id="loginEmail" name="email" required>
@@ -57,6 +58,7 @@
         </div>
         <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
             <form method="POST" action="{% url 'register' %}">
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="registerUsername">使用者名稱</label>
                     <input type="text" class="form-control" id="registerUsername" name="username" required>
