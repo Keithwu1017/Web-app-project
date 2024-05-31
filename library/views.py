@@ -56,7 +56,7 @@ def register(request):
             return redirect('login')
     else:
         form = UserRegistrationForm()
-    return render(request, 'library/register.html', {'form': form, 'error_msg': dict(form.errors)})
+    return render(request, 'library/signin-signup.html', {'form': form, 'error_msg': dict(form.errors)})
 
 def login_view(request):
     if request.method == 'POST':
