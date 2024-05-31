@@ -54,7 +54,7 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}!')
-            return redirect('login')
+            return redirect('register')
     else:
         form = UserRegistrationForm()
     return render(request, 'library/signin-signup.html', {'form': form, 'error_msg': dict(form.errors)})
@@ -73,7 +73,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('login')
+    return redirect('index')
 
 def account_view(request):
     if request.method == 'POST':
@@ -100,5 +100,5 @@ def delete_account(request):
         user = request.user
         user.delete()
         messages.success(request, 'Your account has been deleted.')
-        return redirect('login')
+        return redirect('index')
     return render(request, 'library/delete_account.html')
